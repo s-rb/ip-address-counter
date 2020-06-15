@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class Generator {
 
-    private static final long STRING_COUNT = 5_000L;
+    private static final long STRING_COUNT = 50_000_000L;
 
     private final String sourceFile;
 
