@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.BitSet;
 
 import static ru.list.surkovr.ecwid.App.IP_SPLIT_REGEX;
 
@@ -17,7 +18,9 @@ public class SingleThreadCounter implements Counter {
 
     public Long countUniqueIPs() {
         File file = new File(sourceFile);
-        final boolean[][][][] uniqueIPs = new boolean[256][256][256][256];
+        BitSet[][][] arr = new BitSet[256][256][256];
+        createArray(arr);
+//        final boolean[][][][] uniqueIPs = new boolean[256][256][256][256];
 
         long count = 0L;
         try (FileReader fr = new FileReader(file);
@@ -31,8 +34,8 @@ public class SingleThreadCounter implements Counter {
                     int b = Integer.parseInt(splitted[1]);
                     int c = Integer.parseInt(splitted[2]);
                     int d = Integer.parseInt(splitted[3]);
-                    if (!uniqueIPs[a][b][c][d]) {
-                        uniqueIPs[a][b][c][d] = true;
+                    if (!arr[a][b][c].get(d)) {
+                        arr[a][b][c].set(d, true);
                         // count++;
                     }
                 } catch (Exception e) {
@@ -48,11 +51,21 @@ public class SingleThreadCounter implements Counter {
             for (int j = 0; j < 256; j++) {
                 for (int k = 0; k < 256; k++) {
                     for (int l = 0; l < 256; l++) {
-                        if (uniqueIPs[i][j][k][l]) count++;
+                        if (arr[i][j][k].get(l)) count++;
                     }
                 }
             }
         }
         return count;
+    }
+
+    private void createArray(BitSet[][][] array) {
+        for (int i = 0; i < 256; i++) {
+            for (int j = 0; j < 256; j++) {
+                for (int k = 0; k < 256; k++) {
+                    array[i][j][k] = new BitSet(256);
+                }
+            }
+        }
     }
 }
