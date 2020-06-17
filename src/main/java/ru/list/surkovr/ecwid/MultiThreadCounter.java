@@ -11,6 +11,8 @@ import java.util.concurrent.atomic.AtomicLong;
 import static ru.list.surkovr.ecwid.App.IP_SPLIT_REGEX;
 
 // ! Не протестирован на большом объеме !
+// TODO: Использовать для синхронизации работы CountDownLatch - 
+//  https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/CountDownLatch.html
 public class MultiThreadCounter implements Counter {
 
     public static final int MAX_QUEUE_SIZE = 150;

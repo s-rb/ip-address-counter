@@ -8,7 +8,7 @@ public class App {
     public static void main(String[] args) {
         long startCountTimer = System.currentTimeMillis();
 
-        Counter counter = new MultiThreadCounter(SOURCE_FILE);
+        Counter counter = new SingleThreadCounter(SOURCE_FILE);
         long count = counter.countUniqueIPs();
 
         System.out.println("Unique results " + count);
