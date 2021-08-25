@@ -1,6 +1,8 @@
 # ip-address-counter
 App counts unique ip v4 addresses in src file
 
+![Java](https://img.shields.io/badge/-Java-05122A?style=flat&logo=Java&logoColor=FFA518) ![Large File](https://img.shields.io/badge/-Large_File-05122A?style=flat&logo=none) ![Concurrent](https://img.shields.io/badge/-Concurrent-05122A?style=flat&logo=Concurrent) ![Efficiency](https://img.shields.io/badge/-Efficiency-05122A?style=flat) ![Maven](https://img.shields.io/badge/-Maven-05122A?style=flat&logo=apachemaven&logoColor=fffffb)
+
 Программа подсчитывает уникальные IP v4 адреса построчно в исходном файле.
 Формат адресов 192.201.12.168 (разделены точкой).
 Для хранения использует массив массивов третьей степени BitSet[][][] в каждом объект BitSet(256).
