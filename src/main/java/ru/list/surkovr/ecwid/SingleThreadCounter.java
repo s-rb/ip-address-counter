@@ -20,7 +20,6 @@ public class SingleThreadCounter implements Counter {
         File file = new File(sourceFile);
         BitSet[][][] arr = new BitSet[256][256][256];
         createArray(arr);
-//        final boolean[][][][] uniqueIPs = new boolean[256][256][256][256];
 
         long count = 0L;
         try (FileReader fr = new FileReader(file);
@@ -46,7 +45,7 @@ public class SingleThreadCounter implements Counter {
             e.printStackTrace();
         }
 
-        // Если подразумевается малое количество дубликатов - быстрее счетчик увеличивать при проверке каждого значения (выше)
+        // If a small number of duplicates is assumed - it's faster to increment the counter when checking each value (above)
         for (int i = 0; i < 256; i++) {
             for (int j = 0; j < 256; j++) {
                 for (int k = 0; k < 256; k++) {
